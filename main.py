@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, Response
 import os
-from os.path import join, dirname, realpath
 import pandas as pd
 import json
 
@@ -92,9 +91,9 @@ def rankResults(data):
     for i,row in data.iterrows():
         try:
             if data.loc[i, "totalPoints"] == data.loc[i + 1, "totalPoints"]:
-                data.loc[i, "rank"] = str(int(rank - 1)) + " - " + str(int(rank))
+                data.loc[i, "rank"] = str(int(rank - 1)) + "-" + str(int(rank))
             elif data.loc[i, "totalPoints"] == data.loc[i - 1, "totalPoints"]:
-                data.loc[i, "rank"] = str(int(rank)) + " - " + str(int(rank + 1))
+                data.loc[i, "rank"] = str(int(rank)) + "-" + str(int(rank + 1))
             else:
                 data.loc[i, "rank"] = rank
             rank -=1
